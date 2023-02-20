@@ -35,8 +35,10 @@ T* add_array(size_t size, int size_a, int size_b)
     T* arr_b = init_array<int>(size_b);
     cout << "Array A:" << "\t";
     print_array<int>(arr_a);
+    cout << "---------------------------------------------------------------------------------------------" << endl;
     cout << "Array B:" << "\t";
     print_array<int>(arr_b);
+    cout << "---------------------------------------------------------------------------------------------" << endl;
 
     for (size_t i = 0; i < size_a; i++)
     {
@@ -64,7 +66,17 @@ int main()
     int size = size_a + size_b;
     int* arr_3 = add_array<int>(size, size_a, size_b);
     cout << "Final Array:" << "\t";
-    print_array<int>(arr_3);
+    for (size_t i = 0; i < size; i++)
+    {
+        if (i == size_a - 1)
+        {
+            cout << arr_3[i] << endl << "\t\t";
+        }
+        else
+        {
+            cout << arr_3[i] << "\t";
+        }
+    }
 
     return 0;
 }
