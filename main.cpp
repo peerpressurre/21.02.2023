@@ -68,7 +68,7 @@ int main()
     cout << "Final Array:" << "\t";
     for (size_t i = 0; i < size; i++)
     {
-        if (i == 9)
+        if (i == size_a - 1)
         {
             cout << arr_3[i] << endl << "\t\t";
         }
