@@ -2,32 +2,6 @@
 #include <ctime>
 using namespace std;
 
-template<typename T>
-T* init_array(size_t size)
-{
-    T* arr = new T[size];
-    for (size_t i = 0; i < size; i++)
-    {
-        arr[i] = T(rand() % 10);
-    }
-    return arr;
-}
-
-template<typename T>
-void print_array(T* arr, int size = -1)
-{
-    if (size == -1)
-    {
-        size = _msize(arr) / sizeof * arr;
-    }
-    for (size_t i = 0; i < size; i++)
-    {
-        cout << *(arr + i) << '\t';
-    }
-    cout << endl;
-}
-
-//template<typename T>
 int summul(int* arr, int size, int* sum, int* mul)
 {
     *sum = 0;
