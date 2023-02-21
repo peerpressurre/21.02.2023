@@ -43,7 +43,7 @@ int main()
     summul(arr, size, &pos, &neg, &zero);
     cout << "Number of positive numbers: " << pos << endl;
     cout << "Number of negative numbers: " << neg << endl;
-    cout << "Number of numbers equal to 0: " << zero << endl;
+    cout << "Number of numbers equal to [0]: " << zero << endl;
 
     return 0;
 }
