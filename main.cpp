@@ -63,5 +63,7 @@ int main()
     else {
         cout << "Subset not found" << endl;
     }
+    delete[] A; 
+    delete[] B;
     return 0;
 }
