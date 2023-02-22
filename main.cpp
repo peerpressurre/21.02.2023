@@ -2,7 +2,7 @@
 #include <ctime>
 using namespace std;
 
-int summul(int* arr, int size, int* pos, int* neg, int* zero)
+int PosNegZero(int* arr, int size, int* pos, int* neg, int* zero)
 {
     *neg = 0;
     *pos = 0;
@@ -40,7 +40,7 @@ int main()
     }
     int* arrptr = arr;
     cout << endl;
-    summul(arr, size, &pos, &neg, &zero);
+    PosNegZero(arr, size, &pos, &neg, &zero);
     cout << "Number of positive numbers: " << pos << endl;
     cout << "Number of negative numbers: " << neg << endl;
     cout << "Number of numbers equal to [0]: " << zero << endl;
