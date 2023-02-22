@@ -2,35 +2,34 @@
 #include <ctime>
 using namespace std;
 
-template<typename T>
-T* init_array(size_t size)
-{
-    T* arr = new T[size];
-    for (size_t i = 0; i < size; i++)
-    {
-        arr[i] = T(rand() % 10);
-    }
-    return arr;
-}
+//template<typename T>
+//T* init_array(size_t size)
+//{
+//    T* arr = new T[size];
+//    for (size_t i = 0; i < size; i++)
+//    {
+//        arr[i] = T(rand() % 10);
+//    }
+//    return arr;
+//}
+//
+//template<typename T>
+//void print_array(T* arr, int size = -1)
+//{
+//    if (size == -1)
+//    {
+//        size = _msize(arr) / sizeof * arr;
+//    }
+//    for (size_t i = 0; i < size; i++)
+//    {
+//        cout << *(arr + i) << '\t';
+//    }
+//    cout << endl;
+//}
 
 template<typename T>
-void print_array(T* arr, int size = -1)
+T* Delete(T* arr, T size, T switch_on)
 {
-    if (size == -1)
-    {
-        size = _msize(arr) / sizeof * arr;
-    }
-    for (size_t i = 0; i < size; i++)
-    {
-        cout << *(arr + i) << '\t';
-    }
-    cout << endl;
-}
-
-template<typename T>
-T* add_array(T* arr, T size, T switch_on)
-{
-   /* T* arr = new T[size];*/
     T* arrn = new T[size];
     if (switch_on == 2)
     {
@@ -56,7 +55,6 @@ T* add_array(T* arr, T size, T switch_on)
             }
         }
     }
-   
     return arrn;
 }
 
@@ -86,7 +84,7 @@ int main()
         cout << arr1[i] << "\t";
     }
     cout << endl;
-    int* arr = add_array<int>(arr1, size, switch_on);
+    int* arr = Delete<int>(arr1, size, switch_on);
     cout << "Cleared Array:" << "\t";
     for (size_t i = 0; i < size; i++)
     {
@@ -95,5 +93,7 @@ int main()
             cout << arr[i] << "\t";
         }
     }
+    delete[] arr1;
+    delete[] arr;
     return 0;
 }
