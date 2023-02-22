@@ -2,17 +2,28 @@
 #include <ctime>
 using namespace std;
 
-int** AddCol(int** arr, int row, int col)
+int** AddCol(int** arr, int row, int col, int index)
 {
     int** arr2 = new int* [row];
     for (int i = 0; i < row; i++)
     {
-        arr2[i] = new int[col];
-        for (int j = 0; j < col - 1; j++)
+        arr2[i] = new int[col + 1];
+        for (int j = 0; j < col; j++)
         {
-            arr2[i][j] = arr[i][j];
-        }
-        arr2[i][col - 1] = rand() % 10;
+            if (j == index)
+            {
+                arr2[i][j] = rand() % 10;
+            }
+            else if (j < index)
+            {
+                arr2[i][j] = arr[i][j];
+
+            }
+            else
+            {              
+                arr2[i][j] = arr[i][j - 1];
+            }
+        } 
     }
     return arr2;
 }
@@ -25,6 +36,9 @@ int main()
     cin >> row;
     cout << "Enter number of columns: ";
     cin >> col;
+    int index;
+    cout << "Enter index for additional column: ";
+    cin >> index;
     int** arr = new int* [row];
     for (int i = 0; i < row; i++)
     {
@@ -43,7 +57,7 @@ int main()
         }
         cout << endl;
     }
-    int** arr2 = AddCol(arr, row, col + 1);
+    int** arr2 = AddCol(arr, row, col + 1, index);
     cout << "New array:\n";
     for (int i = 0; i < row; i++) {
         for (int j = 0; j < col + 1; j++)
