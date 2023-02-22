@@ -7,7 +7,6 @@ int PosNegZero(int* arr, int size, int* pos, int* neg, int* zero)
     *neg = 0;
     *pos = 0;
     *zero = 0;
-
     for (int i = 0; i < size; i++)
     {
         if (arr[i] < 0)
@@ -38,12 +37,11 @@ int main()
         arr[i] = rand() % 31 - 10;
         cout << arr[i] << "\t";
     }
-    int* arrptr = arr;
     cout << endl;
     PosNegZero(arr, size, &pos, &neg, &zero);
     cout << "Number of positive numbers: " << pos << endl;
     cout << "Number of negative numbers: " << neg << endl;
     cout << "Number of numbers equal to [0]: " << zero << endl;
-
+    delete[] arr;
     return 0;
 }
