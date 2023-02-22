@@ -31,12 +31,6 @@ template<typename T>
 T* no_rep(T* arr_a, T* arr_b, T size, T size_a, T size_b)
 {
     T* arr = new T[size];
-    /*T* arr_a = init_array<int>(size_a);
-    T* arr_b = init_array<int>(size_b);
-    cout << "Array A:" << "\t";
-    print_array<int>(arr_a);
-    cout << "Array B:" << "\t";
-    print_array<int>(arr_b);*/
     int counter = 0;
     for (size_t i = 0; i < size_a; i++)
     {
