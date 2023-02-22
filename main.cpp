@@ -30,9 +30,9 @@ int main()
         arr[i] = rand() % 10;
         cout << arr[i] << "\t";
     }  
-    int* arrptr = arr;
     cout << endl;
     summul(arr, size, sumptr, mulptr);
     cout << "Sum: " << *sumptr << "\n" << "Mul: " << *mulptr;
+    delete[] arr;
     return 0;
 }
