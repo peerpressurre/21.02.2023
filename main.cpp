@@ -41,7 +41,6 @@ int main()
             cout << arr2[i] << "\t";
         }
     }
-    cout << "Sizeof: " << sizeof(arr2) << endl;
     delete[] arr; 
     delete[] arr2;
     return 0;
