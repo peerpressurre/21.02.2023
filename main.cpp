@@ -77,6 +77,6 @@ int main()
             cout << arr_3[i] << "\t";
         }
     }
-
+    delete[] arr_3;
     return 0;
 }
