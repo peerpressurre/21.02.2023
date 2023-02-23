@@ -2,13 +2,13 @@
 #include <ctime>
 using namespace std;
 
-int* AddBlock(int* arr, int* block, int size1, int size2)
+int* AddBlock(int* arr, int* block, int size_arr, int size_block)
 {
-    int size = size1 + size2;
+    int size = size_arr + size_block;
     int* arr2 = new int[size];
     for (size_t i = 0, j = 0; i < size; i++)
     {
-        if (i < size1)
+        if (i < size_arr)
         {
             arr2[i] = arr[i];
         }
@@ -24,32 +24,35 @@ int* AddBlock(int* arr, int* block, int size1, int size2)
 int main()
 {
     srand(time(0));
-    int size1, size2;
+    int size_arr, size_block;
     cout << "Enter size of an array: ";
-    cin >> size1;
-    cout << "Enter size of block to add: ";
-    cin >> size2;
-    int* arr = new int[size1];
-    int* block = new int[size2];
+    cin >> size_arr;
+    cout << "Enter size of block: ";
+    cin >> size_block;
+    int* arr = new int[size_arr];
+    int* block = new int[size_block];
     cout << "Original Array:\t";
-    for (size_t i = 0; i < size1; i++)
+    for (size_t i = 0; i < size_arr; i++)
     {
         arr[i] = rand() % 10;
         cout << arr[i] << "\t";
     }
     cout << endl;
     cout << "Block:\t\t";
-    for (size_t i = 0; i < size2; i++)
+    for (size_t i = 0; i < size_block; i++)
     {
         block[i] = rand() % 10;
         cout << block[i] << "\t";
     }
     cout << endl;
-    int* arr2 = AddBlock(arr, block, size1, size2);
+    int* arr2 = AddBlock(arr, block, size_arr, size_block);
     cout << "Updated array:\t";
-    for (size_t i = 0; i < size1 + size2; i++)
+    for (size_t i = 0; i < size_arr + size_block; i++)
     {
         cout << arr2[i] << "\t";
     }
+    delete[] arr;
+    delete[] arr2;
+    delete[] block;
     return 0;
 }
