@@ -2,7 +2,7 @@
 #include <ctime>
 using namespace std;
 
-int* AddBlock(int* arr, int size, int index)
+int* Delelement(int* arr, int size, int index)
 {  
     int* arr2 = new int[size-1];
     for (size_t i = 0; i < size-1; i++)
@@ -35,7 +35,7 @@ int main()
         cout << arr[i] << "\t";
     }
     cout << endl;
-    int* arr2 = AddBlock(arr, size, index);
+    int* arr2 = Delelement(arr, size, index);
     cout << "Updated array:\t";
     for (size_t i = 0; i < size - 1; i++)
     {
