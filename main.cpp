@@ -33,7 +33,7 @@ int main()
     int size_arr, size_block, index;
     cout << "Enter size of an array: ";
     cin >> size_arr;
-    cout << "Enter size of block to add: ";
+    cout << "Enter size of block: ";
     cin >> size_block;
     cout << "Enter index: ";
     cin >> index;
@@ -59,5 +59,8 @@ int main()
     {
         cout << arr2[i] << "\t";
     }
+    delete[] arr;
+    delete[] arr2;
+    delete[] block;
     return 0;
 }
