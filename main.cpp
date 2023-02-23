@@ -2,17 +2,21 @@
 #include <ctime>
 using namespace std;
 
-int** AddCol(int** arr, int row, int col)
+int* AddBlock(int* arr, int* block, int size1, int size2)
 {
-    int** arr2 = new int* [row];
-    for (int i = 0; i < row; i++)
+    int size = size1 + size2;
+    int* arr2 = new int[size];
+    for (size_t i = 0, j = 0; i < size; i++)
     {
-        arr2[i] = new int[col];
-        for (int j = 0; j < col - 1; j++)
+        if (i < size1)
         {
-            arr2[i][j] = arr[i][j];
+            arr2[i] = arr[i];
         }
-        arr2[i][col - 1] = rand() % 10;
+        else
+        {
+            arr2[i] = block[j];
+            j++;
+        }
     }
     return arr2;
 }
@@ -20,44 +24,32 @@ int** AddCol(int** arr, int row, int col)
 int main()
 {
     srand(time(0));
-    int row, col;
-    cout << "Enter number of rows: ";
-    cin >> row;
-    cout << "Enter number of columns: ";
-    cin >> col;
-    int** arr = new int* [row];
-    for (int i = 0; i < row; i++)
+    int size1, size2;
+    cout << "Enter size of an array: ";
+    cin >> size1;
+    cout << "Enter size of block to add: ";
+    cin >> size2;
+    int* arr = new int[size1];
+    int* block = new int[size2];
+    cout << "Original Array:\t";
+    for (size_t i = 0; i < size1; i++)
     {
-        arr[i] = new int[col];
-        for (int j = 0; j < col; j++)
-        {
-            arr[i][j] = rand() % 10;
-        }
+        arr[i] = rand() % 10;
+        cout << arr[i] << "\t";
     }
-    cout << "Original array:\n";
-    for (int i = 0; i < row; i++)
+    cout << endl;
+    cout << "Block:\t\t";
+    for (size_t i = 0; i < size2; i++)
     {
-        for (int j = 0; j < col; j++) 
-        {
-            cout << arr[i][j] << "  ";
-        }
-        cout << endl;
+        block[i] = rand() % 10;
+        cout << block[i] << "\t";
     }
-    int** arr2 = AddCol(arr, row, col + 1);
-    cout << "New array:\n";
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col + 1; j++)
-        {
-            cout << arr2[i][j] << "  ";
-        }
-        cout << endl;
-    }
-    for (int i = 0; i < row; i++)
+    cout << endl;
+    int* arr2 = AddBlock(arr, block, size1, size2);
+    cout << "Updated array:\t";
+    for (size_t i = 0; i < size1 + size2; i++)
     {
-        delete[] arr[i];
-        delete[] arr2[i];
+        cout << arr2[i] << "\t";
     }
-    delete[] arr;
-    delete[] arr2;
     return 0;
 }
