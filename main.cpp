@@ -2,22 +2,18 @@
 #include <ctime>
 using namespace std;
 
-int** DelCol(int** arr, int row, int col, int index)
-{
-    int** arr2 = new int* [row];
-    for (int i = 0; i < row; i++)
+int* AddBlock(int* arr, int size, int index)
+{  
+    int* arr2 = new int[size-1];
+    for (size_t i = 0; i < size-1; i++)
     {
-        arr2[i] = new int[col-1];
-        for (int j = 0; j < col - 1; j++)
+        if (i < index)
         {
-            if (j < index)
-            {
-                arr2[i][j] = arr[i][j];
-            }
-            else if(j >= index)
-            {
-                arr2[i][j] = arr[i][j+1];
-            }
+            arr2[i] = arr[i];
+        }
+        else if (i >= index)
+        {
+            arr2[i] = arr[i + 1];
         }
     }
     return arr2;
@@ -26,45 +22,24 @@ int** DelCol(int** arr, int row, int col, int index)
 int main()
 {
     srand(time(0));
-    int row, col;
-    cout << "Enter number of rows: ";
-    cin >> row;
-    cout << "Enter number of columns: ";
-    cin >> col;
-    int index;
-    cout << "Enter index of column to delete: ";
+    int size, index;
+    cout << "Enter size of an array: ";
+    cin >> size;
+    cout << "Enter index: ";
     cin >> index;
-    int** arr = new int* [row];
-    for (int i = 0; i < row; i++)
+    int* arr = new int[size];
+    cout << "Original Array:\t";
+    for (size_t i = 0; i < size; i++)
     {
-        arr[i] = new int[col];
-        for (int j = 0; j < col; j++)
-        {
-            arr[i][j] = rand() % 10;
-        }
+        arr[i] = rand() % 10;
+        cout << arr[i] << "\t";
     }
-    cout << "Original array:\n";
-    for (int i = 0; i < row; i++)
+    cout << endl;
+    int* arr2 = AddBlock(arr, size, index);
+    cout << "Updated array:\t";
+    for (size_t i = 0; i < size - 1; i++)
     {
-        for (int j = 0; j < col; j++)
-        {
-            cout << arr[i][j] << "  ";
-        }
-        cout << endl;
-    }
-    int** arr2 = DelCol(arr, row, col + 1, index);
-    cout << "New array:\n";
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col - 1; j++)
-        {
-            cout << arr2[i][j] << "  ";
-        }
-        cout << endl;
-    }
-    for (int i = 0; i < row; i++)
-    {
-        delete[] arr[i];
-        delete[] arr2[i];
+        cout << arr2[i] << "\t";
     }
     delete[] arr;
     delete[] arr2;
